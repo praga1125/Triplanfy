@@ -2,11 +2,13 @@
   "name": "ai-travel-planner",
   "private": true,
   "version": "0.0.0",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "start": "node index.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -29,7 +31,8 @@
     "react-router-dom": "^6.28.0",
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss": "^3.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
