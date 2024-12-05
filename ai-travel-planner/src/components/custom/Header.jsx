@@ -39,7 +39,7 @@ function Header() {
           <div className="flex-shrink-0">
             <img
               src="/logo.png"
-              className="h-32 sm:h-32 w-auto object-contain cursor-pointer"
+              className="h-28 sm:h-28 w-auto object-contain cursor-pointer"
               alt="Logo"
               onClick={() => (window.location.href = "/")}
             />
@@ -64,7 +64,7 @@ function Header() {
                   />
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <a
-                      href="/profile"
+                      onClick={() => (window.location.href = "/profile")}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
                       Profile
@@ -124,6 +124,7 @@ function Header() {
               <>
                 <Button
                   variant="outline"
+                  onClick={() => (window.location.href = "/my-trips")}
                   className="w-full rounded-full mb-2 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white"
                 >
                   My Trips
@@ -134,7 +135,12 @@ function Header() {
                     className="w-8 h-8 rounded-full"
                     alt="Profile"
                   />
-                  <span className="text-sm text-gray-700">Profile</span>
+                  <span
+                    className="text-sm text-gray-700"
+                    onClick={() => (window.location.href = "/profile")}
+                  >
+                    Profile
+                  </span>
                 </div>
               </>
             ) : (
