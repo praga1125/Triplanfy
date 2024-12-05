@@ -1,0 +1,2 @@
+# Triplanfy
+AI Trip Planner 
