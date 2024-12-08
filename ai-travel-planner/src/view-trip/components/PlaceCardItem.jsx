@@ -59,10 +59,16 @@ function PlaceCardItem({ item }) {
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               {item.travelTime && <p>⏰ {item.travelTime}</p>}
               {(item.travelCost || item.travelCost === 0) && (
-                <p>💰 Travel Cost: {item.travelCost}</p>
+                <p>
+                  💰 Travel Cost:{" "}
+                  {item.travelCost == 0 ? "N/A" : item.travelCost}
+                </p>
               )}
               {(item.ticketPricing || item.ticketPricing === 0) && (
-                <p>🎟️ Entry: {item.ticketPricing}</p>
+                <p>
+                  🎟️ Entry:{" "}
+                  {item.ticketPricing === 0 ? "Free" : item.ticketPricing}
+                </p>
               )}
               {item.geoCoordinates && Array.isArray(item.geoCoordinates) && (
                 <p>📍 Coordinates: {item.geoCoordinates.join(", ")}</p>

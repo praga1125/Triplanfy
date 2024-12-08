@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { googleLogout } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
-    setUser(userData ? JSON.parse(userData) : null);
-  }, []);
+    if (!userData) {
+      navigate("/");
+      return;
+    }
+    setUser(JSON.parse(userData));
+  }, [navigate]);
 
   const handleSignOut = () => {
     googleLogout();
     localStorage.clear();
     setUser(null);
-    window.location.href = "/";
+    navigate("/");
   };
 
   if (!user) {

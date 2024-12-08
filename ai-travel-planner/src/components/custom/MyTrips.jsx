@@ -21,10 +21,12 @@ function MyTrips() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    if (user?.email) {
-      fetchUserTrips();
+    if (!user?.email) {
+      navigate("/");
+      return;
     }
-  }, [user]);
+    fetchUserTrips();
+  }, [user, navigate]);
 
   useEffect(() => {
     if (trips.length > 0) {
