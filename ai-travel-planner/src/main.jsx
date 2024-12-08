@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import CreateTrip from "./create-trip";
@@ -16,6 +16,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Navigate to="/" />,
     children: [
       {
         path: "/",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/my-trips",
         element: <MyTrips />,
+      },
+      {
+        path: "*",
+        element: <Navigate to="/" />,
       },
     ],
   },
