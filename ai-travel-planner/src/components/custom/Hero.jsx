@@ -104,7 +104,7 @@ function Hero() {
               <DialogHeader className="mb-6">
                 <DialogTitle className="text-2xl font-bold text-center text-gray-800">
                   <motion.img
-                    src="/logo.svg"
+                    src="/logo.png"
                     className="mx-auto mb-4 w-32"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
