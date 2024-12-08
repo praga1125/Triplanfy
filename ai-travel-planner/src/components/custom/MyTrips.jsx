@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { PHOTO_REF_URL, searchPlaces } from "@/service/GlobalApi";
 
 function MyTrips() {
+  console.log("IN my trps.........");
   const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(true);
   const [placePhotos, setPlacePhotos] = useState({});

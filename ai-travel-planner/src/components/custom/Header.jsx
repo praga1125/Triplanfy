@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { googleLogout } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   useEffect(() => {
@@ -41,7 +43,7 @@ function Header() {
               src="/logo.png"
               className="h-28 sm:h-28 w-auto object-contain cursor-pointer"
               alt="Logo"
-              onClick={() => (window.location.href = "/")}
+              onClick={() => navigate("/")}
             />
           </div>
 
@@ -51,7 +53,7 @@ function Header() {
               <div className="flex items-center gap-4">
                 <Button
                   variant="outline"
-                  onClick={() => (window.location.href = "/my-trips")}
+                  onClick={() => navigate("/my-trips")}
                   className="rounded-full px-6 py-2 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white transition-all duration-300"
                 >
                   My Trips
@@ -64,7 +66,7 @@ function Header() {
                   />
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <a
-                      onClick={() => (window.location.href = "/profile")}
+                      onClick={() => navigate("/profile")}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
                       Profile
@@ -74,7 +76,7 @@ function Header() {
                         googleLogout();
                         localStorage.clear();
                         setUser(null);
-                        window.location.href = "/";
+                        navigate("/");
                       }}
                       className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
                     >
@@ -124,7 +126,7 @@ function Header() {
               <>
                 <Button
                   variant="outline"
-                  onClick={() => (window.location.href = "/my-trips")}
+                  onClick={() => navigate("/my-trips")}
                   className="w-full rounded-full mb-2 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white"
                 >
                   My Trips
@@ -137,7 +139,7 @@ function Header() {
                   />
                   <span
                     className="text-sm text-gray-700"
-                    onClick={() => (window.location.href = "/profile")}
+                    onClick={() => navigate("/profile")}
                   >
                     Profile
                   </span>
