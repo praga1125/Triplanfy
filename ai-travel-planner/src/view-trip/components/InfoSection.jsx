@@ -70,10 +70,6 @@ function InfoSection({ trip }) {
             </div>
           </div>
         </div>
-
-        <Button className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 px-6 py-3 rounded-full">
-          <FiSend className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-        </Button>
       </div>
 
       <div className="mt-6 flex flex-wrap gap-4">

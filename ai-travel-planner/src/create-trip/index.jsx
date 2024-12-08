@@ -85,20 +85,40 @@ function CreateTrip() {
       let responseText = result.response?.text();
       console.log("Raw AI Response:", responseText);
 
-      // Extract JSON from markdown or direct response
-      let jsonMatch = responseText.match(/{.*}/s);
-
-      if (!jsonMatch) {
-        throw new Error("No valid JSON found in response");
-      }
-
+      // Clean and parse the response
       try {
-        const jsonString = jsonMatch[0];
-        const tripData = JSON.parse(jsonString);
+        // Remove any markdown code block markers and note section
+        responseText = responseText.replace(/```json\n?|\n?```/g, "");
+        
+        // Remove any text after the closing brace of the JSON
+        const jsonEndIndex = responseText.lastIndexOf("}");
+        if (jsonEndIndex !== -1) {
+          responseText = responseText.substring(0, jsonEndIndex + 1);
+        }
+        
+        // Remove any trailing commas before closing braces/brackets
+        responseText = responseText.replace(/,(\s*[}\]])/g, "$1");
+        
+        // Clean up any potential formatting issues
+        responseText = responseText.trim();
+        
+        // Handle potential string escaping issues
+        responseText = responseText.replace(/\n/g, " ").replace(/\r/g, "");
+        responseText = responseText.replace(/\\/g, "\\\\");
+        
+        // Attempt to parse the cleaned JSON
+        const tripData = JSON.parse(responseText);
+
+        // Validate required fields
+        if (!tripData.tripDetails || !tripData.hotels || !tripData.itinerary) {
+          throw new Error("Missing required trip data fields");
+        }
+
         await saveAiTrip(tripData);
       } catch (parseError) {
         console.error("JSON Parse Error:", parseError);
-        toast.error("Failed to parse trip data. Please try again.");
+        console.log("Failed JSON string:", responseText);
+        toast.error("Failed to process trip data. Please try again.");
       }
     } catch (error) {
       console.error("Error generating trip:", error);

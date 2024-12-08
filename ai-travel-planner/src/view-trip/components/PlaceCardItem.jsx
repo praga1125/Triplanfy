@@ -15,12 +15,12 @@ function PlaceCardItem({ item }) {
       };
       const response = await searchPlaces(data);
       if (response?.places?.[0]?.photos?.[0]) {
-        console.log(response.places[0].photos[3].name);
+        console.log(response.places[0].photos[0].name);
         const photoRefUrl = PHOTO_REF_URL.replace(
           "{NAME}",
           response.places[0].photos[3].name
         );
-        console.log();
+        console.log(photoRefUrl);
         setPlacePhoto(photoRefUrl);
       }
     } catch (error) {
