@@ -11,6 +11,7 @@ import ViewTrip from "./view-trip/[tripId]/index.jsx";
 import Profile from "./components/custom/Profile";
 import MyTrips from "./components/custom/MyTrips";
 import Hero from "./components/custom/Hero";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,19 +25,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-trip",
-        element: <CreateTrip />,
+        element: (
+          <ProtectedRoute>
+            <CreateTrip />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/view-trip/:tripId",
-        element: <ViewTrip />,
+        element: (
+          <ProtectedRoute>
+            <ViewTrip />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/my-trips",
-        element: <MyTrips />,
+        element: (
+          <ProtectedRoute>
+            <MyTrips />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "*",

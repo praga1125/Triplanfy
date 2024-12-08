@@ -26,8 +26,18 @@ function MyTrips() {
       navigate("/");
       return;
     }
-    fetchUserTrips();
-  }, [user, navigate]);
+
+    const fetchData = async () => {
+      try {
+        await fetchUserTrips();
+      } catch (error) {
+        console.error("Error fetching trips:", error);
+        navigate("/");
+      }
+    };
+
+    fetchData();
+  }, [navigate]);
 
   useEffect(() => {
     if (trips.length > 0) {
